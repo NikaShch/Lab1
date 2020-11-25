@@ -1,0 +1,13 @@
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.csprojAssemblyReference.cache
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.AssemblyInfoInputs.cache
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.AssemblyInfo.cs
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.csproj.CoreCompileInputs.cache
+C:\Users\1\rep\Lab1\LabBase\LabBase\bin\Debug\netcoreapp3.1\LabBase.exe
+C:\Users\1\rep\Lab1\LabBase\LabBase\bin\Debug\netcoreapp3.1\LabBase.deps.json
+C:\Users\1\rep\Lab1\LabBase\LabBase\bin\Debug\netcoreapp3.1\LabBase.runtimeconfig.json
+C:\Users\1\rep\Lab1\LabBase\LabBase\bin\Debug\netcoreapp3.1\LabBase.runtimeconfig.dev.json
+C:\Users\1\rep\Lab1\LabBase\LabBase\bin\Debug\netcoreapp3.1\LabBase.dll
+C:\Users\1\rep\Lab1\LabBase\LabBase\bin\Debug\netcoreapp3.1\LabBase.pdb
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.dll
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.pdb
+C:\Users\1\rep\Lab1\LabBase\LabBase\obj\Debug\netcoreapp3.1\LabBase.genruntimeconfig.cache
