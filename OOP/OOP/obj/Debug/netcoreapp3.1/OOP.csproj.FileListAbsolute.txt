@@ -11,3 +11,11 @@ C:\Users\1\rep\Lab1\OOP\OOP\obj\Debug\netcoreapp3.1\OOP.csproj.CoreCompileInputs
 C:\Users\1\rep\Lab1\OOP\OOP\obj\Debug\netcoreapp3.1\OOP.dll
 C:\Users\1\rep\Lab1\OOP\OOP\obj\Debug\netcoreapp3.1\OOP.pdb
 C:\Users\1\rep\Lab1\OOP\OOP\obj\Debug\netcoreapp3.1\OOP.genruntimeconfig.cache
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\Stripe.net.dll
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\1\rep\Lab1\OOP\OOP\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\1\rep\Lab1\OOP\OOP\obj\Debug\netcoreapp3.1\OOP.csproj.CopyComplete

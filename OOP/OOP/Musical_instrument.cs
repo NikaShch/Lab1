@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP
 {
-    abstract class Musical_instrument//абстрактный класс музыкальный инструмент
+    abstract class  Musical_instrument //абстрактный класс музыкальный инструмент
     {
         public string name;//наименование
         public string brand;//бренд музыкального инструмента
