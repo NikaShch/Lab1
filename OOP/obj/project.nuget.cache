@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xLR4+OPGo5gfgW6Q0R0a2LSL5nuPvfh8bnDkW8kVvLrNFmnyNkqpIv9GjlrIjfTcJqQjTMeONN7il+zf3IzkEQ==",
+  "dgSpecHash": "SBAsfao9lGJkZ0vY/u7ciZk3p7iA9so+1LEEY8Vzl6dW1N/ao2l6LLIOzZJPAGZiZU78evL0Q3j/DX1z5x/J/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\1\\Documents\\oop2\\OOP\\OOP.csproj",
+  "projectFilePath": "C:\\Users\\1\\rep\\Lab1\\OOP\\OOP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\1\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
