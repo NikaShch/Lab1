@@ -51,7 +51,17 @@ namespace OOP
             {
                 Console.WriteLine(x.ToString());
             }
-            
+             Console.WriteLine("Введите ваш возраст: ");
+            try
+            {
+                int age = int.Parse(Console.ReadLine());
+            }
+            catch(Exception x)
+            {
+                Console.WriteLine("Неккоректный ввод!");
+                Console.WriteLine(x.Message);
+                
+            }
 
 
         }
