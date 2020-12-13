@@ -1,0 +1,3 @@
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDriverBasic.AssemblyInfoInputs.cache
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDriverBasic.AssemblyInfo.cs
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDriverBasic.csproj.CoreCompileInputs.cache
