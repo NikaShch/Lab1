@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "bBKcdnAah1bVZauDe42V7mem2acYs+GFKnTE6ywbOy46yla33MOrL9cXvRGrMv+/zAiHR9Z3YxEKIwd5y4eAeg==",
+  "dgSpecHash": "5p8yFJklswfOAjcDk9dDMHoBgG5Z3F9u7ypcuPgTdV3mTDdm2HxExJamlBSXH/LKymWCFMe4s5gpMWg5nfW09g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\WebDriverBasic.csproj",
+  "projectFilePath": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\WebDriverAdvanced.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\dotnetseleniumextras.pageobjects\\3.11.0\\dotnetseleniumextras.pageobjects.3.11.0.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\dotnetseleniumextras.pageobjects.core\\3.12.0\\dotnetseleniumextras.pageobjects.core.3.12.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.codecoverage\\16.8.3\\microsoft.codecoverage.16.8.3.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
@@ -44,6 +46,7 @@
     "C:\\Users\\1\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\system.reflection.dispatchproxy\\4.4.0\\system.reflection.dispatchproxy.4.4.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\1\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
