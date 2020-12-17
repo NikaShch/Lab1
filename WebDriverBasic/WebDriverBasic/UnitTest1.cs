@@ -2,15 +2,14 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
-using WebDriverAdvanced.po;
-using WebDriverAdvanced.po.components;
+using WebDriverAdvanced.page_object;
+using WebDriverAdvanced.page_object.components;
 
 namespace WebDriverAdvanced
 {
     public class Tests
     {
         private IWebDriver driver;
-        public static int count;
         private MainPage mainPage;
         private LogPage logPage;
         private AllProductsPage allProductsPage;
@@ -18,6 +17,7 @@ namespace WebDriverAdvanced
         private Navigation navigation;
         private Container container;
         public int index;
+        
         [OneTimeSetUp]
         public void SetUp()
         {
@@ -31,7 +31,7 @@ namespace WebDriverAdvanced
         public void Test1_Login_Test()
         {
             mainPage = new MainPage(driver);
-            logPage = mainPage.ClickOnInputLogin("user", "user");
+            logPage = mainPage.InputLogin("user", "user");
             container = new Container(driver);
             Assert.AreEqual(container.GetTitlePage(), "Home page");
         }
@@ -41,22 +41,9 @@ namespace WebDriverAdvanced
         {
             allProductsPage = logPage.ClickOnAllProducts();
             int myindex = allProductsPage.GetCountProducts();
-            productPage = allProductsPage.ClickOnCreateNew();
-
-            productPage.InputProductName("Product_my");
-            productPage.InputCategoryName("Produce");
-            productPage.InputSupplierName("Mayumi's");
-            productPage.InputUnitPrice("1000");
-            productPage.InputQuantityPerUnit("10");
-            productPage.InputUnitsInStock("500");
-            productPage.InputUnitsOnOrder("4");
-            productPage.InputReorderLevel("1");
-            productPage.ClickOnDiscontinued();
-
-            allProductsPage = productPage.ClickOnSendNewProduct();
+            productPage = allProductsPage.CreateNew();
+            productPage.CreateProduct("Product_my", "Produce", "Mayumi's", "1000", "10", "500","4","1");
             index = allProductsPage.GetCountProducts();
-
-            Assert.IsEmpty(productPage.SearchFormCreate());
             Assert.AreEqual(myindex + 1, index);
             Assert.IsTrue(allProductsPage.ProductOnTable(index).Displayed);
 
@@ -66,15 +53,15 @@ namespace WebDriverAdvanced
         public void Test3_Open_Created_Product_Test()
         {
             productPage = allProductsPage.ClickOnLinkProduct(index);
-            Assert.AreEqual("Product_my", productPage.GetProductNameValue());
-            Assert.AreEqual("Produce", productPage.GetCategoryNameText());
-            Assert.AreEqual("Mayumi's", productPage.GetSupplierNameText());
-            Assert.AreEqual("1000,0000", productPage.GetUnitPriceValue());
-            Assert.AreEqual("10", productPage.GetQuantityPerUnitValue());
-            Assert.AreEqual("500", productPage.GetUnitsInStockValue());
-            Assert.AreEqual("4", productPage.GetUnitsOnOrderValue());
-            Assert.AreEqual("1", productPage.GetReorderLevelValue());
-            Assert.AreEqual("true", productPage.GetDiscontinuedValue());
+            Assert.AreEqual("Product_my", productPage.GetProductName());
+            Assert.AreEqual("Produce", productPage.GetCategoryName());
+            Assert.AreEqual("Mayumi's", productPage.GetSupplierName());
+            Assert.AreEqual("1000,0000", productPage.GetUnitPrice());
+            Assert.AreEqual("10", productPage.GetQuantityPerUnit());
+            Assert.AreEqual("500", productPage.GetUnitsInStock());
+            Assert.AreEqual("4", productPage.GetUnitsOnOrder());
+            Assert.AreEqual("1", productPage.GetReorderLevel());
+            Assert.AreEqual("true", productPage.GetDiscontinued());
         }
 
         [Test]
@@ -82,7 +69,7 @@ namespace WebDriverAdvanced
         {
             navigation = new Navigation(driver);
             allProductsPage = navigation.ClickOnLinkProducts();
-            allProductsPage.ClickOnDeleteProduct(index);
+            allProductsPage.DeleteProduct(index);
             allProductsPage.ClickOnYes();
             Assert.IsFalse(allProductsPage.ProductOnTable(index).Selected);
         }

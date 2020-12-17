@@ -4,7 +4,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace WebDriverAdvanced.po.components
+namespace WebDriverAdvanced.page_object.components
 {
     class Navigation
     {

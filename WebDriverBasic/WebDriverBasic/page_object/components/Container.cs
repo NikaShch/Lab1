@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using OpenQA.Selenium;
 
-namespace WebDriverAdvanced.po.components
+namespace WebDriverAdvanced.page_object.components
 {
     class Container
     {

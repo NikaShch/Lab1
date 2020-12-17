@@ -3,7 +3,7 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace WebDriverAdvanced.po
+namespace WebDriverAdvanced.page_object
 {
     class AllProductsPage
     {
@@ -15,16 +15,16 @@ namespace WebDriverAdvanced.po
         }
 
         private int CountProducts => driver.FindElement(By.XPath("//table/tr")).Count;
-        private IWebDriver CreateNewButton => driver.FindElement(By.LinkText("Create new"));
+        private IWebDriver CreateNewButton => (IWebDriver)driver.FindElement(By.LinkText("Create new"));
 
         public int GetCountProducts()
         {
             return CountProducts;
         }
 
-        public ProductPage ClickOnCreateNew()
+        public ProductPage CreateNew()
         {
-            new Action(driver).SendKeys(CreateNewButton, Keys.Enter).Build().Perform();
+            new Actions(driver).SendKeys((IWebElement)CreateNewButton, Keys.Enter).Build().Perform();
             return new ProductPage(driver);
         }
 
@@ -39,7 +39,7 @@ namespace WebDriverAdvanced.po
             return new ProductPage(driver);
         }
 
-        public void ClickOnDeleteProduct(int index)
+        public void DeleteProduct(int index)
         {
             driver.FindElement(By.XPath("//table//tr[" + index + "]//a[text()=\"Remove\"]")).Click();
         }

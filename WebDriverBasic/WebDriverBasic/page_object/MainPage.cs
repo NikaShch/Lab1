@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebDriverAdvanced.po
+namespace WebDriverAdvanced.page_object
 {
     class MainPage
     {
@@ -19,7 +19,7 @@ namespace WebDriverAdvanced.po
         private IWebElement FieldPassword => driver.FindElement(By.Id("Password"));
         private IWebElement InputButton => driver.FindElement(By.CssSelector(".btn"));
 
-        public LogPage ClickOnInputLogin(string name, string password)
+        public LogPage InputLogin(string name, string password)
         {
             new Actions(driver).SendKeys(FieldName, name).SendKeys(FieldPassword, password).Build().Perform();
             new Actions(driver).SendKeys(InputButton, Keys.Enter).Build().Perform();
