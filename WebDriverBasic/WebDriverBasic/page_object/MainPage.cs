@@ -18,18 +18,17 @@ namespace WebDriverAdvanced.page_object
         private IWebElement FieldName => driver.FindElement(By.Id("Name"));
         private IWebElement FieldPassword => driver.FindElement(By.Id("Password"));
         private IWebElement InputButton => driver.FindElement(By.CssSelector(".btn"));
-
-        public LogPage InputLogin(string name, string password)
+        private IWebElement FieldLoginPage => driver.FindElement(By.XPath("//h2"));
+        public void InputLogin(string name, string password)
         {
-            new Actions(driver).SendKeys(FieldName, name).SendKeys(FieldPassword, password).Build().Perform();
-            new Actions(driver).SendKeys(InputButton, Keys.Enter).Build().Perform();
-            return new LogPage(driver);
+            new Actions(driver).SendKeys(FieldName, name).Build().Perform();
+            new Actions(driver).SendKeys(FieldPassword, name).Build().Perform();
+            new Actions(driver).MoveToElement(InputButton).Click(InputButton).Build().Perform();
         }
 
-        public bool SearchFormLogin()
+        public string SearchFormLogin()
         {
-            return driver.FindElement(By.XPath("//form[@action=\"/Account/Login\"]")).Displayed;
-
+            return FieldLoginPage.Text;
         }
     }
 }

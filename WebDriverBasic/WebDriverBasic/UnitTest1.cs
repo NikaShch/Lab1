@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Collections.Generic;
 using WebDriverAdvanced.page_object;
 using WebDriverAdvanced.page_object.components;
 
@@ -15,8 +14,6 @@ namespace WebDriverAdvanced
         private AllProductsPage allProductsPage;
         private ProductPage productPage;
         private Navigation navigation;
-        private Container container;
-        public int index;
         
         [OneTimeSetUp]
         public void SetUp()
@@ -31,28 +28,28 @@ namespace WebDriverAdvanced
         public void Test1_Login_Test()
         {
             mainPage = new MainPage(driver);
-            logPage = mainPage.InputLogin("user", "user");
-            container = new Container(driver);
-            Assert.AreEqual(container.GetTitlePage(), "Home page");
-        }
+            logPage = new LogPage(driver);
+            mainPage.InputLogin("user", "user");
+            Assert.AreNotEqual("Login",mainPage.SearchFormLogin());
+        }       
 
         [Test] 
         public void Test2_Create_Product_Test()
         {
-            allProductsPage = logPage.ClickOnAllProducts();
-            int myindex = allProductsPage.GetCountProducts();
-            productPage = allProductsPage.CreateNew();
+            allProductsPage = new AllProductsPage(driver);
+            productPage = new ProductPage(driver);
+            logPage.ClickOnAllProducts();
+            allProductsPage.CreateNew();
             productPage.CreateProduct("Product_my", "Produce", "Mayumi's", "1000", "10", "500","4","1");
-            index = allProductsPage.GetCountProducts();
-            Assert.AreEqual(myindex + 1, index);
-            Assert.IsTrue(allProductsPage.ProductOnTable(index).Displayed);
+            Assert.AreNotEqual("Product editing", allProductsPage.FieldAllProductsText());
 
         }
 
         [Test]
         public void Test3_Open_Created_Product_Test()
         {
-            productPage = allProductsPage.ClickOnLinkProduct(index);
+            productPage = new ProductPage(driver);
+            allProductsPage.ClickOnProduct("Product_my");
             Assert.AreEqual("Product_my", productPage.GetProductName());
             Assert.AreEqual("Produce", productPage.GetCategoryName());
             Assert.AreEqual("Mayumi's", productPage.GetSupplierName());
@@ -67,18 +64,17 @@ namespace WebDriverAdvanced
         [Test]
         public void Test4_Delete_Product_Test()
         {
-            navigation = new Navigation(driver);
-            allProductsPage = navigation.ClickOnLinkProducts();
-            allProductsPage.DeleteProduct(index);
+            productPage.GoToProducts();
+            allProductsPage.DeleteProduct();
             allProductsPage.ClickOnYes();
-            Assert.IsFalse(allProductsPage.ProductOnTable(index).Selected);
+            Assert.Throws<OpenQA.Selenium.InvalidSelectorException>(() => driver.FindElement(By.XPath("=//td/a[text()=\"Product_my\"]")));
         }
 
         [Test]
         public void Test5_Logout_Test()
         {
-            mainPage = navigation.ClickOnLinkLogout();
-            Assert.IsTrue(mainPage.SearchFormLogin());
+            navigation.ClickOnLinkLogout();
+            Assert.AreEqual("Login", logPage.LogPageText());
         }
 
         [OneTimeTearDown]

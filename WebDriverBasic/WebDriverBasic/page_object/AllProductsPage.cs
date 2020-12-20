@@ -14,34 +14,29 @@ namespace WebDriverAdvanced.page_object
             this.driver = driver;
         }
 
-        private int CountProducts => driver.FindElement(By.XPath("//table/tr")).Count;
-        private IWebDriver CreateNewButton => (IWebDriver)driver.FindElement(By.LinkText("Create new"));
+        private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));
+        
+        private IWebElement CreateNewButton => driver.FindElement(By.LinkText("Create new"));
+        private IWebElement Product_myDeleteButton => driver.FindElement(By.XPath("//*[a[text()=\"Product_my\"]]/following-sibling::*[10]/a[text()=\"Remove\"]"));
 
-        public int GetCountProducts()
+        public void CreateNew()
         {
-            return CountProducts;
+            new Actions(driver).Click(CreateNewButton).Build().Perform();
+           
+        }
+        public string FieldAllProductsText()
+        {
+            return FieldAllProducts.Text;
         }
 
-        public ProductPage CreateNew()
+        public void ClickOnProduct(string product)
         {
-            new Actions(driver).SendKeys((IWebElement)CreateNewButton, Keys.Enter).Build().Perform();
-            return new ProductPage(driver);
+            driver.FindElement(By.LinkText(product)).Click();
         }
 
-        public IWebElement ProductOnTable(int index)
+        public void DeleteProduct()
         {
-            return driver.FindElement(By.XPath("//table//tr[" + index + "]"));
-        }
-
-        public ProductPage ClickOnLinkProduct(int index)
-        {
-            driver.FindElement(By.XPath("//table//tr[" + index + "]/td[2]/a")).Click();
-            return new ProductPage(driver);
-        }
-
-        public void DeleteProduct(int index)
-        {
-            driver.FindElement(By.XPath("//table//tr[" + index + "]//a[text()=\"Remove\"]")).Click();
+            new Actions(driver).Click(Product_myDeleteButton).Build().Perform();
         }
 
         public void ClickOnYes()

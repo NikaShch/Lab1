@@ -16,20 +16,21 @@ namespace WebDriverAdvanced.page_object
             this.driver = driver;
         }
 
-        private IWebElement ProductNameField => driver.FindElement(By.XPath("//*[@id=\"ProductId\"]"));
+        private IWebElement ProductNameField => driver.FindElement(By.XPath("//input[@id=\"ProductName\"]"));
         private IWebElement CategoryIdField => driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]"));
 
         private IWebElement SupplierIdField => driver.FindElement(By.XPath("//*[@id=\"SupplierId\"]"));
 
-        private IWebElement UnitPriceField => driver.FindElement(By.XPath("//*[@id=\"UnitPriceId\"]"));
-        private IWebElement QuantityPerUnitField => driver.FindElement(By.XPath("//*[@id=\"QuantityPerUnitId\"]"));
-        private IWebElement UnitsInStockField => driver.FindElement(By.XPath("//*[@id=\"UnitsInStockId\"]"));
-        private IWebElement UnitsOnOrderField => driver.FindElement(By.XPath("//*[@id=\"UnitsOnOrderId\"]"));
-        private IWebElement ReorderLevelField => driver.FindElement(By.XPath("//*[@id=\"ReorderLevelId\"]"));
+        private IWebElement UnitPriceField => driver.FindElement(By.Id("UnitPrice"));
+        private IWebElement QuantityPerUnitField => driver.FindElement(By.Id("QuantityPerUnit"));
+        private IWebElement UnitsInStockField => driver.FindElement(By.Id("UnitsInStock"));
+        private IWebElement UnitsOnOrderField => driver.FindElement(By.Id("UnitsOnOrder"));
+        private IWebElement ReorderLevelField => driver.FindElement(By.Id("ReorderLevel"));
 
-        private IWebElement DiscontinuedField => driver.FindElement(By.XPath("//*[@id=\"DiscontinuedId\"]"));
+        private IWebElement DiscontinuedField => driver.FindElement(By.XPath("//*[@type=\"checkbox\"]"));
 
         private IWebElement SendButton => driver.FindElement(By.CssSelector(".btn"));
+        private IWebElement ProductsButton => driver.FindElement(By.XPath("//*[@href=\"/Product\"]"));
 
         public void CreateProduct(string product_name, string categoryid, string supplierid, string unitprice, string quantityperunit, string unitsinstock, string unitsonoder, string reorderlevel)
         {
@@ -89,7 +90,10 @@ namespace WebDriverAdvanced.page_object
         {
             return DiscontinuedField.GetAttribute("checked");
         }
-
+        public void GoToProducts()
+        {
+            new Actions(driver).Click(ProductsButton).Build().Perform();
+        }
 
 
     }

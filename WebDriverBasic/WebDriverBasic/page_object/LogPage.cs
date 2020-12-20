@@ -14,13 +14,17 @@ namespace WebDriverAdvanced.page_object
         {
             this.driver = driver;
         }
+        private IWebElement FieldLoginPage => driver.FindElement(By.XPath("//h2"));
+        private IWebElement LinkAllProducts => driver.FindElement(By.LinkText("All Products"));
 
-        IWebElement LinkAllProducts => driver.FindElement(By.XPath("//div/child::a[@href=\"/Product\"]"));
-
-        public AllProductsPage ClickOnAllProducts()
+        public void ClickOnAllProducts()
         {
-            new Actions(driver).SendKeys(LinkAllProducts, Keys.Enter).Build().Perform();
-            return new AllProductsPage(driver);
+            new Actions(driver).MoveToElement(LinkAllProducts).Click(LinkAllProducts).Build().Perform();
+            
+        }
+        public string LogPageText()
+        {
+            return FieldLoginPage.Text;
         }
     }
 }
