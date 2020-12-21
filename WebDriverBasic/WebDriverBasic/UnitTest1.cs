@@ -14,6 +14,7 @@ namespace WebDriverAdvanced
         private AllProductsPage allProductsPage;
         private ProductPage productPage;
         private Navigation navigation;
+        public int index;
         
         [OneTimeSetUp]
         public void SetUp()
@@ -39,17 +40,20 @@ namespace WebDriverAdvanced
             allProductsPage = new AllProductsPage(driver);
             productPage = new ProductPage(driver);
             logPage.ClickOnAllProducts();
+            int myindex = allProductsPage.GetCountProducts();
             allProductsPage.CreateNew();
             productPage.CreateProduct("Product_my", "Produce", "Mayumi's", "1000", "10", "500","4","1");
+            allProductsPage = productPage.SendNewProduct();
+            index = allProductsPage.GetCountProducts();
             Assert.AreNotEqual("Product editing", allProductsPage.FieldAllProductsText());
-
+            Assert.AreEqual(myindex + 1, index);
+            Assert.IsTrue(allProductsPage.ProductInTable(index));
         }
 
         [Test]
         public void Test3_Open_Created_Product_Test()
         {
-            productPage = new ProductPage(driver);
-            allProductsPage.ClickOnProduct("Product_my");
+            productPage = allProductsPage.ClickOnProduct(index);
             Assert.AreEqual("Product_my", productPage.GetProductName());
             Assert.AreEqual("Produce", productPage.GetCategoryName());
             Assert.AreEqual("Mayumi's", productPage.GetSupplierName());
@@ -64,17 +68,18 @@ namespace WebDriverAdvanced
         [Test]
         public void Test4_Delete_Product_Test()
         {
-            productPage.GoToProducts();
-            allProductsPage.DeleteProduct();
+            allProductsPage = productPage.navigation.ClickOnLinkProducts();
+            allProductsPage.DeleteProduct(index);
             allProductsPage.ClickOnYes();
-            Assert.Throws<OpenQA.Selenium.InvalidSelectorException>(() => driver.FindElement(By.XPath("=//td/a[text()=\"Product_my\"]")));
+            Assert.IsFalse(allProductsPage.ProductInTable(index));
         }
 
         [Test]
         public void Test5_Logout_Test()
         {
-            navigation.ClickOnLinkLogout();
+            mainPage = allProductsPage.navigation.ClickOnLinkLogout();
             Assert.AreEqual("Login", logPage.LogPageText());
+            Assert.IsTrue(mainPage.SearchFormLogin());
         }
 
         [OneTimeTearDown]

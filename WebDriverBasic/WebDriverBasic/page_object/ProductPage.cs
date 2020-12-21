@@ -3,17 +3,20 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using WebDriverAdvanced.page_object.components;
 
 namespace WebDriverAdvanced.page_object
 {
     class ProductPage
     {
         private IWebDriver driver;
+        public Navigation navigation;
+
 
         public ProductPage(IWebDriver driver)
         {
             this.driver = driver;
+            navigation = new Navigation(driver);
         }
 
         private IWebElement ProductNameField => driver.FindElement(By.XPath("//input[@id=\"ProductName\"]"));
@@ -94,7 +97,11 @@ namespace WebDriverAdvanced.page_object
         {
             new Actions(driver).Click(ProductsButton).Build().Perform();
         }
-
+        public AllProductsPage SendNewProduct()
+        {
+            new Actions(driver).Click(SendButton).Build().Perform();
+            return new AllProductsPage(driver);
+        }
 
     }
 }
