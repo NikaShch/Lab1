@@ -29,10 +29,10 @@ namespace WebDriverAdvanced.page_object
             return CountProducts;
         }
 
-        public void CreateNew()
+        public ProductPage CreateNew()
         {
-            new Actions(driver).Click(CreateNewButton).Build().Perform();
-           
+            new Actions(driver).SendKeys(CreateNewButton, Keys.Enter).Build().Perform();
+            return new ProductPage(driver);
         }
         public bool ProductInTable(int index)
         {

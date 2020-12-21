@@ -30,21 +30,18 @@ namespace WebDriverAdvanced
         {
             mainPage = new MainPage(driver);
             logPage = mainPage.InputLogin("user", "user");
-            Assert.AreNotEqual("Login",mainPage.SearchFormLogin());
+            Assert.AreEqual(logPage.LogPageText(), "Home page");
         }       
 
         [Test] 
         public void Test2_Create_Product_Test()
         {
-            allProductsPage = new AllProductsPage(driver);
-            productPage = new ProductPage(driver);
-            logPage.ClickOnAllProducts();
+            allProductsPage = logPage.ClickOnAllProducts();
             int myindex = allProductsPage.GetCountProducts();
-            allProductsPage.CreateNew();
+            productPage = allProductsPage.CreateNew();
             productPage.CreateProduct("Product_my", "Produce", "Mayumi's", "1000", "10", "500","4","1");
             allProductsPage = productPage.SendNewProduct();
             index = allProductsPage.GetCountProducts();
-            Assert.AreNotEqual("Product editing", allProductsPage.FieldAllProductsText());
             Assert.AreEqual(myindex + 1, index);
             Assert.IsTrue(allProductsPage.ProductInTable(index));
         }

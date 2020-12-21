@@ -19,10 +19,9 @@ namespace WebDriverAdvanced.page_object
             navigation = new Navigation(driver);
         }
 
-        private IWebElement ProductNameField => driver.FindElement(By.XPath("//input[@id=\"ProductName\"]"));
-        private IWebElement CategoryIdField => driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]"));
-
-        private IWebElement SupplierIdField => driver.FindElement(By.XPath("//*[@id=\"SupplierId\"]"));
+        private IWebElement ProductNameField => driver.FindElement(By.Id("ProductName"));
+        private IWebElement CategoryIdField => driver.FindElement(By.Id("CategoryId"));
+        private IWebElement SupplierIdField => driver.FindElement(By.Id("SupplierId"));
 
         private IWebElement UnitPriceField => driver.FindElement(By.Id("UnitPrice"));
         private IWebElement QuantityPerUnitField => driver.FindElement(By.Id("QuantityPerUnit"));
@@ -30,10 +29,9 @@ namespace WebDriverAdvanced.page_object
         private IWebElement UnitsOnOrderField => driver.FindElement(By.Id("UnitsOnOrder"));
         private IWebElement ReorderLevelField => driver.FindElement(By.Id("ReorderLevel"));
 
-        private IWebElement DiscontinuedField => driver.FindElement(By.XPath("//*[@type=\"checkbox\"]"));
+        private IWebElement DiscontinuedField => driver.FindElement(By.Id("Discontinued"));
 
         private IWebElement SendButton => driver.FindElement(By.CssSelector(".btn"));
-        private IWebElement ProductsButton => driver.FindElement(By.XPath("//*[@href=\"/Product\"]"));
 
         public void CreateProduct(string product_name, string categoryid, string supplierid, string unitprice, string quantityperunit, string unitsinstock, string unitsonoder, string reorderlevel)
         {
@@ -46,7 +44,6 @@ namespace WebDriverAdvanced.page_object
             new Actions(driver).SendKeys(UnitsOnOrderField, unitsonoder).Build().Perform();
             new Actions(driver).SendKeys(ReorderLevelField, reorderlevel).Build().Perform();
             new Actions(driver).Click(DiscontinuedField).Build().Perform();
-            new Actions(driver).Click(SendButton).Build().Perform();
         }
 
       public string GetProductName()
@@ -56,12 +53,12 @@ namespace WebDriverAdvanced.page_object
 
         public string GetCategoryName()
         {
-            return CategoryIdField.Text;
+            return CategoryIdField.FindElement(By.XPath("./option[@selected=\"selected\"]")).Text;
         }
 
         public string GetSupplierName()
         {
-            return SupplierIdField.Text;
+            return SupplierIdField.FindElement(By.XPath("./option[@selected=\"selected\"]")).Text;
         }
 
         public string GetUnitPrice()
@@ -93,10 +90,7 @@ namespace WebDriverAdvanced.page_object
         {
             return DiscontinuedField.GetAttribute("checked");
         }
-        public void GoToProducts()
-        {
-            new Actions(driver).Click(ProductsButton).Build().Perform();
-        }
+        
         public AllProductsPage SendNewProduct()
         {
             new Actions(driver).Click(SendButton).Build().Perform();
