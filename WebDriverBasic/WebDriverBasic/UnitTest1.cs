@@ -29,8 +29,7 @@ namespace WebDriverAdvanced
         public void Test1_Login_Test()
         {
             mainPage = new MainPage(driver);
-            logPage = new LogPage(driver);
-            mainPage.InputLogin("user", "user");
+            logPage = mainPage.InputLogin("user", "user");
             Assert.AreNotEqual("Login",mainPage.SearchFormLogin());
         }       
 

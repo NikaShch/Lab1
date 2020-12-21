@@ -21,11 +21,11 @@ namespace WebDriverAdvanced.page_object
         private IWebElement InputButton => driver.FindElement(By.CssSelector(".btn"));
         private IWebElement FieldLoginPage => driver.FindElement(By.XPath("//h2"));
         private IWebElement AccountLogin => driver.FindElement(By.CssSelector("form[action='/Account/Login']"));
-        public void InputLogin(string name, string password)
+        public LogPage InputLogin(string name, string password)
         {
-            new Actions(driver).SendKeys(FieldName, name).Build().Perform();
-            new Actions(driver).SendKeys(FieldPassword, name).Build().Perform();
-            new Actions(driver).MoveToElement(InputButton).Click(InputButton).Build().Perform();
+            new Actions(driver).SendKeys(FieldName, name).SendKeys(FieldPassword, password).Build().Perform();
+            new Actions(driver).SendKeys(InputButton, Keys.Enter).Build().Perform();
+            return new LogPage(driver);
         }
 
         public bool SearchFormLogin()
