@@ -4803,9 +4803,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\WebDriverAdvanced.csproj",
-      "projectName": "WebDriverAdvanced",
-      "projectPath": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\WebDriverAdvanced.csproj",
+      "projectUniqueName": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\WebDriverFramework.csproj",
+      "projectName": "WebDriverFramework",
+      "projectPath": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\WebDriverFramework.csproj",
       "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\1\\rep\\Lab1\\WebDriverBasic\\WebDriverBasic\\obj\\",
       "projectStyle": "PackageReference",

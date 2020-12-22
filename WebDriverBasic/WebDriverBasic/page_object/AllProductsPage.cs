@@ -4,9 +4,9 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebDriverAdvanced.page_object.components;
+using WebDriverFramework.page_object.components;
 
-namespace WebDriverAdvanced.page_object
+namespace WebDriverFramework.page_object
 {
     class AllProductsPage
     {
@@ -23,7 +23,6 @@ namespace WebDriverAdvanced.page_object
         private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));
         private int CountProducts => driver.FindElements(By.XPath("//table//tr")).Count;
         private IWebElement CreateNewButton => driver.FindElement(By.LinkText("Create new"));
-        private IWebElement Product_myDeleteButton => driver.FindElement(By.XPath("//*[a[text()=\"Product_my\"]]/following-sibling::*[10]/a[text()=\"Remove\"]"));
         public int GetCountProducts()
         {
             return CountProducts;
@@ -61,6 +60,10 @@ namespace WebDriverAdvanced.page_object
         public void DeleteProduct(int index)
         {
             driver.FindElement(By.XPath("//table//tr[" + index + "]//a[text()=\"Remove\"]")).Click();
+        }
+        public void GoToNewProduct()
+        {
+            new Actions(driver).Click(CreateNewButton).Build().Perform();
         }
 
         public void ClickOnYes()

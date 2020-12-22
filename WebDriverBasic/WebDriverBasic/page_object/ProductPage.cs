@@ -3,9 +3,10 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebDriverAdvanced.page_object.components;
+using WebDriverFramework.business_objects;
+using WebDriverFramework.page_object.components;
 
-namespace WebDriverAdvanced.page_object
+namespace WebDriverFramework.page_object
 {
     class ProductPage
     {
@@ -32,21 +33,28 @@ namespace WebDriverAdvanced.page_object
         private IWebElement DiscontinuedField => driver.FindElement(By.Id("Discontinued"));
 
         private IWebElement SendButton => driver.FindElement(By.CssSelector(".btn"));
+        private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));
 
-        public void CreateProduct(string product_name, string categoryid, string supplierid, string unitprice, string quantityperunit, string unitsinstock, string unitsonoder, string reorderlevel)
+        
+        public void CreateProduct(Product product)
         {
-            new Actions(driver).SendKeys(ProductNameField, product_name).Build().Perform();
-            new Actions(driver).SendKeys(CategoryIdField, categoryid).Build().Perform();
-            new Actions(driver).SendKeys(SupplierIdField, supplierid).Build().Perform();
-            new Actions(driver).SendKeys(UnitPriceField, unitprice).Build().Perform();
-            new Actions(driver).SendKeys(QuantityPerUnitField, quantityperunit).Build().Perform();
-            new Actions(driver).SendKeys(UnitsInStockField, unitsinstock).Build().Perform();
-            new Actions(driver).SendKeys(UnitsOnOrderField, unitsonoder).Build().Perform();
-            new Actions(driver).SendKeys(ReorderLevelField, reorderlevel).Build().Perform();
+            new Actions(driver).SendKeys(ProductNameField, product.ProductName).Build().Perform();
+            new Actions(driver).SendKeys(CategoryIdField, product.CategoryId).Build().Perform();
+            new Actions(driver).SendKeys(SupplierIdField, product.SupplierId).Build().Perform();
+            new Actions(driver).SendKeys(UnitPriceField, product.UnitPrice).Build().Perform();
+            new Actions(driver).SendKeys(QuantityPerUnitField, product.QuantityPerUnit).Build().Perform();
+            new Actions(driver).SendKeys(UnitsInStockField, product.UnitsInStock).Build().Perform();
+            new Actions(driver).SendKeys(UnitsOnOrderField, product.UnitsOnOrder).Build().Perform();
+            new Actions(driver).SendKeys(ReorderLevelField, product.ReorderLevel).Build().Perform();
             new Actions(driver).Click(DiscontinuedField).Build().Perform();
+            new Actions(driver).Click(SendButton).Build().Perform();
+        }
+        public string FieldAllProductsText()
+        {
+            return FieldAllProducts.Text;
         }
 
-      public string GetProductName()
+        public string GetProductName()
         {
             return ProductNameField.GetAttribute("value");
         }

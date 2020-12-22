@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebDriverAdvanced.page_object
+namespace WebDriverFramework.page_object
 {
     class LogPage
     {
