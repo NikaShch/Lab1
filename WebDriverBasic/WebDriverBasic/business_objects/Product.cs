@@ -6,17 +6,18 @@ namespace WebDriverFramework.business_objects
 {
     class Product
     {
-        public Product(string productName, string categoryId, string supplierId, string unitPrice,
-            string quantityPerUnit, string unitsInStock, string unitsOnOrder, string reorderLevel)
+        public Product(string productName, string categoryId, string supplierId, int unitPrice,
+            string quantityPerUnit, int unitsInStock, int unitsOnOrder, int reorderLevel)
         {
+            Index = 0;
             ProductName = productName;
             CategoryId = categoryId;
             SupplierId = supplierId;
-            UnitPrice = unitPrice;
+            UnitPrice = unitPrice.ToString();
             QuantityPerUnit = quantityPerUnit;
-            UnitsInStock = unitsInStock;
-            UnitsOnOrder = unitsOnOrder;
-            ReorderLevel = reorderLevel;
+            UnitsInStock = unitsInStock.ToString();
+            UnitsOnOrder = unitsOnOrder.ToString();
+            ReorderLevel = reorderLevel.ToString();
         }
 
         public int Index { get; set; }
@@ -31,33 +32,21 @@ namespace WebDriverFramework.business_objects
         //public string Discontinued { get; set; }
 
 
-        public override bool Equals(object other)
+        public override bool Equals(Object obj)
         {
-            var toCompareWith = other as Product;
-            if (toCompareWith == null)
-                return false;
-            return this.ProductName == toCompareWith.ProductName &&
-                this.CategoryId == toCompareWith.CategoryId &&
-                this.SupplierId == toCompareWith.SupplierId &&
-                this.UnitPrice == toCompareWith.UnitPrice &&
-                this.QuantityPerUnit == toCompareWith.QuantityPerUnit &&
-                this.UnitsInStock == toCompareWith.UnitsInStock &&
-                this.UnitsOnOrder == toCompareWith.UnitsOnOrder &&
-                this.ReorderLevel == toCompareWith.ReorderLevel;
+            if (!(obj is Product product)) return false;
+            return ProductName == product.ProductName &&
+                CategoryId == product.CategoryId &&
+                SupplierId == product.SupplierId &&
+                UnitPrice == product.UnitPrice &&
+                QuantityPerUnit == product.QuantityPerUnit &&
+                UnitsInStock == product.UnitsInStock &&
+                UnitsOnOrder == product.UnitsOnOrder &&
+                ReorderLevel == product.ReorderLevel;
         }
         public override int GetHashCode()
         {
-            var hashcode = 13;
-            hashcode = (hashcode * 7) + ProductName.GetHashCode();
-            hashcode = (hashcode * 7) + CategoryId.GetHashCode();
-            hashcode = (hashcode * 7) + SupplierId.GetHashCode();
-            hashcode = (hashcode * 7) + UnitPrice.GetHashCode();
-            hashcode = (hashcode * 7) + QuantityPerUnit.GetHashCode();
-            hashcode = (hashcode * 7) + UnitsInStock.GetHashCode();
-            hashcode = (hashcode * 7) + UnitsOnOrder.GetHashCode();
-            hashcode = (hashcode * 7) + ReorderLevel.GetHashCode();
-            //hashcode = (hashcode * 7) + Discontinued.GetHashCode();
-            return hashcode;
+            return HashCode.Combine(ProductName, CategoryId, SupplierId, UnitPrice, QuantityPerUnit, UnitsInStock, UnitsOnOrder, ReorderLevel);
         }
     }
 

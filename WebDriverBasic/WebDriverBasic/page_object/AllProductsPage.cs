@@ -4,6 +4,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebDriverFramework.business_objects;
 using WebDriverFramework.page_object.components;
 
 namespace WebDriverFramework.page_object
@@ -21,13 +22,11 @@ namespace WebDriverFramework.page_object
         }
 
         private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));
-        private int CountProducts => driver.FindElements(By.XPath("//table//tr")).Count;
+        private IWebElement TableProduct => driver.FindElement(By.XPath("//table"));
         private IWebElement CreateNewButton => driver.FindElement(By.LinkText("Create new"));
-        public int GetCountProducts()
-        {
-            return CountProducts;
-        }
 
+        private int CountProducts => driver.FindElements(By.XPath("//table//tr")).Count;
+        public By Create => By.CssSelector("form[action='/Product/Create']");
         public ProductPage CreateNew()
         {
             new Actions(driver).SendKeys(CreateNewButton, Keys.Enter).Build().Perform();
@@ -50,22 +49,38 @@ namespace WebDriverFramework.page_object
         {
             return FieldAllProducts.Text;
         }
-
-        public ProductPage ClickOnProduct(int index)
+        public int GetCountProducts()
         {
-            driver.FindElement(By.XPath("//table//tr[" + index + "]/td[2]/a")).Click();
+            return CountProducts;
+        }
+
+        public ProductPage ClickOnProduct(Product product)
+        {
+            TableProduct.FindElement(By.XPath("//table//tr[" + product.Index + "]/td[2]/a")).Click();
             return new ProductPage(driver);
+        }
+        public By ProductInTable(Product product)
+        {
+            return By.XPath("//table//tr[" + product.Index + "]");
         }
 
         public void DeleteProduct(int index)
         {
             driver.FindElement(By.XPath("//table//tr[" + index + "]//a[text()=\"Remove\"]")).Click();
         }
-        public void GoToNewProduct()
-        {
-            new Actions(driver).Click(CreateNewButton).Build().Perform();
-        }
 
+        public bool ProductPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException) 
+            {
+                return false;
+            }
+        }
         public void ClickOnYes()
         {
             driver.SwitchTo().Alert().Accept();
@@ -73,6 +88,11 @@ namespace WebDriverFramework.page_object
         public void GoToProduct(string product)
         {
             driver.FindElement(By.LinkText(product)).Click();
+        }
+        public ProductPage GoToNewProduct()
+        {
+            new Actions(driver).SendKeys(CreateNewButton, Keys.Enter).Build().Perform();
+            return new ProductPage(driver);
         }
     }
 }

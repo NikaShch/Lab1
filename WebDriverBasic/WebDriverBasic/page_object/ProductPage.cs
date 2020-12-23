@@ -36,31 +36,54 @@ namespace WebDriverFramework.page_object
         private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));
 
         
-        public void CreateProduct(Product product)
+        //public void CreateProduct(Product product)
+        //{
+        //    new Actions(driver).SendKeys(ProductNameField, product.ProductName).Build().Perform();
+        //    new Actions(driver).SendKeys(CategoryIdField, product.CategoryId).Build().Perform();
+        //    new Actions(driver).SendKeys(SupplierIdField, product.SupplierId).Build().Perform();
+        //    new Actions(driver).SendKeys(UnitPriceField, product.UnitPrice).Build().Perform();
+        //    new Actions(driver).SendKeys(QuantityPerUnitField, product.QuantityPerUnit).Build().Perform();
+        //    new Actions(driver).SendKeys(UnitsInStockField, product.UnitsInStock).Build().Perform();
+        //    new Actions(driver).SendKeys(UnitsOnOrderField, product.UnitsOnOrder).Build().Perform();
+        //    new Actions(driver).SendKeys(ReorderLevelField, product.ReorderLevel).Build().Perform();
+        //    new Actions(driver).Click(DiscontinuedField).Build().Perform();
+        //    //new Actions(driver).Click(SendButton).Build().Perform();
+        //}
+        public void InputProductName(Product product)
         {
             new Actions(driver).SendKeys(ProductNameField, product.ProductName).Build().Perform();
-            new Actions(driver).SendKeys(CategoryIdField, product.CategoryId).Build().Perform();
-            new Actions(driver).SendKeys(SupplierIdField, product.SupplierId).Build().Perform();
-            new Actions(driver).SendKeys(UnitPriceField, product.UnitPrice).Build().Perform();
-            new Actions(driver).SendKeys(QuantityPerUnitField, product.QuantityPerUnit).Build().Perform();
-            new Actions(driver).SendKeys(UnitsInStockField, product.UnitsInStock).Build().Perform();
-            new Actions(driver).SendKeys(UnitsOnOrderField, product.UnitsOnOrder).Build().Perform();
-            new Actions(driver).SendKeys(ReorderLevelField, product.ReorderLevel).Build().Perform();
-            new Actions(driver).Click(DiscontinuedField).Build().Perform();
-            //new Actions(driver).Click(SendButton).Build().Perform();
         }
-        public Product ReadProduct()
+        public void InputCategoryName(Product product)
         {
-            string editproductname = ProductNameField.GetAttribute("value");
-            string editcategoryid = CategoryIdField.Text;
-            string editsupplierid = SupplierIdField.Text;
-            string editunitprice = Math.Truncate(Convert.ToDouble(UnitPriceField.GetAttribute("value"))).ToString();
-            string editquantityqerunit = QuantityPerUnitField.GetAttribute("value");
-            string editunitsinstock = UnitsInStockField.GetAttribute("value");
-            string editunitsonorder = UnitsOnOrderField.GetAttribute("value");
-            string editreorderlevel = ReorderLevelField.GetAttribute("value");
-            return new Product(editproductname, editcategoryid, editsupplierid, editunitprice, editquantityqerunit, editunitsinstock, editunitsonorder, editreorderlevel);
+            new Actions(driver).Click(CategoryIdField).SendKeys(product.CategoryId).Build().Perform();
         }
+        public void InputSupplierName(Product product)
+        {
+            new Actions(driver).Click(SupplierIdField).SendKeys(product.SupplierId).Build().Perform();
+        }
+        public void InputUnitPrice(Product product)
+        {
+            new Actions(driver).SendKeys(UnitPriceField, product.UnitPrice).Build().Perform();
+        }
+        public void InputQuantityPerUnit(Product product)
+        {
+            new Actions(driver).SendKeys(QuantityPerUnitField, product.QuantityPerUnit).Build().Perform();
+        }
+        public void InputUnitsInStock(Product product)
+        {
+            new Actions(driver).SendKeys(UnitsInStockField, product.UnitsInStock.ToString()).Build().Perform();
+        }
+
+        public void InputUnitsOnOrder(Product product)
+        {
+            new Actions(driver).SendKeys(UnitsOnOrderField, product.UnitsOnOrder).Build().Perform();
+        }
+
+        public void InputReorderLevel(Product product)
+        {
+            new Actions(driver).SendKeys(ReorderLevelField, product.ReorderLevel).Build().Perform();
+        }
+        
 
         public string FieldAllProductsText()
         {
@@ -84,7 +107,8 @@ namespace WebDriverFramework.page_object
 
         public string GetUnitPrice()
         {
-            return UnitPriceField.GetAttribute("value");
+            string unitPrice = UnitPriceField.GetAttribute("value");
+            return unitPrice.Substring(0, unitPrice.Length - 5);
         }
 
         public string GetQuantityPerUnit()
@@ -107,11 +131,13 @@ namespace WebDriverFramework.page_object
             return ReorderLevelField.GetAttribute("value");
         }
 
-        public string GetDiscontinued()
+        public bool GetDiscontinued()
         {
-            return DiscontinuedField.GetAttribute("checked");
+            if (String.Compare(DiscontinuedField.GetAttribute("checked"), "true") == 0) return true;
+            else return false;
         }
         
+
         public AllProductsPage SendNewProduct()
         {
             new Actions(driver).Click(SendButton).Build().Perform();

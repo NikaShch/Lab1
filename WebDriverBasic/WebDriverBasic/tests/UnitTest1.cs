@@ -14,9 +14,9 @@ namespace WebDriverFramework
         
         private LogPage logPage;
         private AllProductsPage allProductsPage;
-        private ProductPage productPage;
+       // private ProductPage productPage;
         public int index;
-        private readonly Product my = new Product("My_product", "Produce", "Mayumi's", "1000", "10", "500", "4", "1");
+        private readonly Product my = new Product("My_product", "Produce", "Mayumi's", 1000, "10", 500, 4, 1);
         private readonly User myUser = new User("user", "user");
 
         [Test]
@@ -29,17 +29,20 @@ namespace WebDriverFramework
         [Test] 
         public void Test2_Create_Product_Test()
         {
-            productPage = new ProductPage(driver);
-            Assert.AreNotEqual(productPage.FieldAllProductsText(), ProductService.NewProduct(my, driver));
+            allProductsPage = ProductService.CreateNewProduct(my, driver);
+            Assert.IsFalse(allProductsPage.ProductPresent(allProductsPage.Create));
+            Assert.IsTrue(allProductsPage.ProductPresent(allProductsPage.ProductInTable(my)));
+
+            //productPage = new ProductPage(driver);
+            //Assert.AreNotEqual(productPage.FieldAllProductsText(), ProductService.NewProduct(my, driver));
         }
 
         [Test]
         public void Test3_Open_Created_Product_Test()
         {
-            allProductsPage = new AllProductsPage(driver);
-            allProductsPage.GoToProduct("My_product");
-            Assert.AreEqual(my, productPage.ReadProduct());
-
+            ProductService.OpenProduct(my, driver);
+            Product productMy = ProductService.CreateProductFromFields(driver);
+            Assert.AreEqual(my, productMy);
         }
     }
 }
