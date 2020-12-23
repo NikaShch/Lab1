@@ -1,8 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WebDriverFramework.business_objects;
 using WebDriverFramework.page_object;
 
@@ -14,40 +11,30 @@ namespace WebDriverFramework.service.ui
         {
             LogPage logPage = new LogPage(driver);
             AllProductsPage allProductsPage = logPage.ClickOnAllProducts();
-            int index = allProductsPage.GetCountProducts() + 1;
-            ProductPage productPage = allProductsPage.GoToNewProduct();
+            int index = allProductsPage.GetCount() + 1;
+            ProductPage productPage = allProductsPage.NewProduct();
             product.Index = index;
             productPage.InputProductName(product);
-            productPage.InputCategoryName(product);
-            productPage.InputSupplierName(product);
+            productPage.InputCategoryId(product);
+            productPage.InputSupplierId(product);
             productPage.InputUnitPrice(product);
             productPage.InputQuantityPerUnit(product);
             productPage.InputUnitsInStock(product);
             productPage.InputUnitsOnOrder(product);
             productPage.InputReorderLevel(product);
-            return productPage.SendNewProduct();
+            return productPage.GetNewProduct();
         }
-        //public static AllProductsPage NewProduct(Product product, IWebDriver driver)
-        //{
-        //    AllProductsPage allproductspage = new AllProductsPage(driver);
-        //    ProductPage productpage = new ProductPage(driver);
-        //    MainPage mainpage = new MainPage(driver);
-        //    mainpage.GoToAllProducts();
-        //    allproductspage.GoToNewProduct();
-        //    productpage.CreateProduct(product);
-        //    return productpage.SendNewProduct();
-        //}
         public static ProductPage OpenProduct(Product product, IWebDriver driver)
         {
             AllProductsPage allProductsPage = new AllProductsPage(driver);
             return allProductsPage.ClickOnProduct(product);
         }
-        public static Product CreateProductFromFields(IWebDriver driver)
+        public static Product FormProduct(IWebDriver driver)
         {
             ProductPage productPage = new ProductPage(driver);
             string ProductName = productPage.GetProductName();
-            string categoryId = productPage.GetCategoryName();
-            string supplierId = productPage.GetSupplierName();
+            string categoryId = productPage.GetCategoryId();
+            string supplierId = productPage.GetSupplierId();
             int unitPrice = Convert.ToInt32(productPage.GetUnitPrice());
             string quantityPerUnit = productPage.GetQuantityPerUnit();
             int unitsInStock = Convert.ToInt32(productPage.GetUnitsInStock());

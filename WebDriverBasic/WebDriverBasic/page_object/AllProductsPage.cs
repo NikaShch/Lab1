@@ -47,7 +47,7 @@ namespace WebDriverFramework.page_object
         {
             return FieldAllProducts.Text;
         }
-        public int GetCountProducts()
+        public int GetCount()
         {
             return CountProducts;
         }
@@ -87,7 +87,7 @@ namespace WebDriverFramework.page_object
         {
             driver.FindElement(By.LinkText(product)).Click();
         }
-        public ProductPage GoToNewProduct()
+        public ProductPage NewProduct()
         {
             new Actions(driver).SendKeys(CreateNewButton, Keys.Enter).Build().Perform();
             return new ProductPage(driver);

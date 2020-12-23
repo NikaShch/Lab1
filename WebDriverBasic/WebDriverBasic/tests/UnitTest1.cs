@@ -34,7 +34,7 @@ namespace WebDriverFramework
         public void Test3_Open_Created_Product_Test()
         {
             ProductService.OpenProduct(my, driver);
-            Product productMy = ProductService.CreateProductFromFields(driver);
+            Product productMy = ProductService.FormProduct(driver);
             Assert.AreEqual(my, productMy);
         }
     }

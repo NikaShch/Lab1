@@ -30,20 +30,19 @@ namespace WebDriverFramework.page_object
         private IWebElement UnitsOnOrderField => driver.FindElement(By.Id("UnitsOnOrder"));
         private IWebElement ReorderLevelField => driver.FindElement(By.Id("ReorderLevel"));
 
-        private IWebElement DiscontinuedField => driver.FindElement(By.Id("Discontinued"));
 
-        private IWebElement SendButton => driver.FindElement(By.CssSelector(".btn"));
+        private IWebElement Button => driver.FindElement(By.CssSelector(".btn"));
         private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));     
         
         public void InputProductName(Product product)
         {
             new Actions(driver).SendKeys(ProductNameField, product.ProductName).Build().Perform();
         }
-        public void InputCategoryName(Product product)
+        public void InputCategoryId(Product product)
         {
             new Actions(driver).Click(CategoryIdField).SendKeys(product.CategoryId).Build().Perform();
         }
-        public void InputSupplierName(Product product)
+        public void InputSupplierId(Product product)
         {
             new Actions(driver).Click(SupplierIdField).SendKeys(product.SupplierId).Build().Perform();
         }
@@ -81,12 +80,12 @@ namespace WebDriverFramework.page_object
             return ProductNameField.GetAttribute("value");
         }
 
-        public string GetCategoryName()
+        public string GetCategoryId()
         {
             return CategoryIdField.FindElement(By.XPath("./option[@selected=\"selected\"]")).Text;
         }
 
-        public string GetSupplierName()
+        public string GetSupplierId()
         {
             return SupplierIdField.FindElement(By.XPath("./option[@selected=\"selected\"]")).Text;
         }
@@ -117,9 +116,9 @@ namespace WebDriverFramework.page_object
             return ReorderLevelField.GetAttribute("value");
         }
 
-        public AllProductsPage SendNewProduct()
+        public AllProductsPage GetNewProduct()
         {
-            new Actions(driver).Click(SendButton).Build().Perform();
+            new Actions(driver).Click(Button).Build().Perform();
             return new AllProductsPage(driver);
         }
 
