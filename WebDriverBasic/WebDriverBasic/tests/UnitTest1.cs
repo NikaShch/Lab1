@@ -12,13 +12,11 @@ namespace WebDriverFramework
     public class Tests : BaseTest
     {
         
-        private MainPage mainPage;
         private LogPage logPage;
         private AllProductsPage allProductsPage;
         private ProductPage productPage;
-        private Navigation navigation;
         public int index;
-        private readonly Product my = new Product("Product_my", "Produce", "Mayumi's", 1000, "10", 500, 4, 1, true);
+        private readonly Product my = new Product("My_product", "Produce", "Mayumi's", "1000", "10", "500", "4", "1");
         private readonly User myUser = new User("user", "user");
 
         [Test]
@@ -38,6 +36,9 @@ namespace WebDriverFramework
         [Test]
         public void Test3_Open_Created_Product_Test()
         {
+            allProductsPage = new AllProductsPage(driver);
+            allProductsPage.GoToProduct("My_product");
+            Assert.AreEqual(my, productPage.ReadProduct());
 
         }
     }

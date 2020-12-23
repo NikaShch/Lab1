@@ -47,8 +47,21 @@ namespace WebDriverFramework.page_object
             new Actions(driver).SendKeys(UnitsOnOrderField, product.UnitsOnOrder).Build().Perform();
             new Actions(driver).SendKeys(ReorderLevelField, product.ReorderLevel).Build().Perform();
             new Actions(driver).Click(DiscontinuedField).Build().Perform();
-            new Actions(driver).Click(SendButton).Build().Perform();
+            //new Actions(driver).Click(SendButton).Build().Perform();
         }
+        public Product ReadProduct()
+        {
+            string editproductname = ProductNameField.GetAttribute("value");
+            string editcategoryid = CategoryIdField.Text;
+            string editsupplierid = SupplierIdField.Text;
+            string editunitprice = Math.Truncate(Convert.ToDouble(UnitPriceField.GetAttribute("value"))).ToString();
+            string editquantityqerunit = QuantityPerUnitField.GetAttribute("value");
+            string editunitsinstock = UnitsInStockField.GetAttribute("value");
+            string editunitsonorder = UnitsOnOrderField.GetAttribute("value");
+            string editreorderlevel = ReorderLevelField.GetAttribute("value");
+            return new Product(editproductname, editcategoryid, editsupplierid, editunitprice, editquantityqerunit, editunitsinstock, editunitsonorder, editreorderlevel);
+        }
+
         public string FieldAllProductsText()
         {
             return FieldAllProducts.Text;

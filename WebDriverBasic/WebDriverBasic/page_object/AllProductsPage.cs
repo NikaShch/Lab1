@@ -70,5 +70,9 @@ namespace WebDriverFramework.page_object
         {
             driver.SwitchTo().Alert().Accept();
         }
+        public void GoToProduct(string product)
+        {
+            driver.FindElement(By.LinkText(product)).Click();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace WebDriverFramework.service.ui
 {
     class ProductService
     {
-        public static string NewProduct(Product product, IWebDriver driver)
+        public static AllProductsPage NewProduct(Product product, IWebDriver driver)
         {
             AllProductsPage allproductspage = new AllProductsPage(driver);
             ProductPage productpage = new ProductPage(driver);
@@ -17,8 +17,7 @@ namespace WebDriverFramework.service.ui
             mainpage.GoToAllProducts();
             allproductspage.GoToNewProduct();
             productpage.CreateProduct(product);
-            return allproductspage.FieldAllProductsText();
-
+            return productpage.SendNewProduct();
         }
 
     }
