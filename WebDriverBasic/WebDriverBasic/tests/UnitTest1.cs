@@ -35,5 +35,10 @@ namespace WebDriverFramework
             Assert.AreNotEqual(productPage.FieldAllProductsText(), ProductService.NewProduct(my, driver));
         }
 
+        [Test]
+        public void Test3_Open_Created_Product_Test()
+        {
+
+        }
     }
 }
