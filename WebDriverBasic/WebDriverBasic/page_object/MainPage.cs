@@ -2,8 +2,6 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using WebDriverFramework.business_objects;
 
 namespace WebDriverFramework.page_object

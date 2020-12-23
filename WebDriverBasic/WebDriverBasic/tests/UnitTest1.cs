@@ -1,9 +1,6 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using WebDriverFramework.business_objects;
 using WebDriverFramework.page_object;
-using WebDriverFramework.page_object.components;
 using WebDriverFramework.service.ui;
 using WebDriverFramework.tests;
 
@@ -14,7 +11,6 @@ namespace WebDriverFramework
         
         private LogPage logPage;
         private AllProductsPage allProductsPage;
-       // private ProductPage productPage;
         public int index;
         private readonly Product my = new Product("My_product", "Produce", "Mayumi's", 1000, "10", 500, 4, 1);
         private readonly User myUser = new User("user", "user");
@@ -32,9 +28,6 @@ namespace WebDriverFramework
             allProductsPage = ProductService.CreateNewProduct(my, driver);
             Assert.IsFalse(allProductsPage.ProductPresent(allProductsPage.Create));
             Assert.IsTrue(allProductsPage.ProductPresent(allProductsPage.ProductInTable(my)));
-
-            //productPage = new ProductPage(driver);
-            //Assert.AreNotEqual(productPage.FieldAllProductsText(), ProductService.NewProduct(my, driver));
         }
 
         [Test]

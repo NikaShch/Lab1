@@ -53,7 +53,6 @@ namespace WebDriverFramework.service.ui
             int unitsInStock = Convert.ToInt32(productPage.GetUnitsInStock());
             int unitsOnOrder = Convert.ToInt32(productPage.GetUnitsOnOrder());
             int reorderLevel = Convert.ToInt32(productPage.GetReorderLevel());
-            //bool discontinued = productPage.GetDiscontinued();
             Product product = new Product(ProductName, categoryId, supplierId, unitPrice, quantityPerUnit, unitsInStock, unitsOnOrder, reorderLevel);//, discontinued);
             return product;
         }

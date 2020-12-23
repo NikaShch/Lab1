@@ -33,22 +33,8 @@ namespace WebDriverFramework.page_object
         private IWebElement DiscontinuedField => driver.FindElement(By.Id("Discontinued"));
 
         private IWebElement SendButton => driver.FindElement(By.CssSelector(".btn"));
-        private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));
-
+        private IWebElement FieldAllProducts => driver.FindElement(By.XPath("//h2"));     
         
-        //public void CreateProduct(Product product)
-        //{
-        //    new Actions(driver).SendKeys(ProductNameField, product.ProductName).Build().Perform();
-        //    new Actions(driver).SendKeys(CategoryIdField, product.CategoryId).Build().Perform();
-        //    new Actions(driver).SendKeys(SupplierIdField, product.SupplierId).Build().Perform();
-        //    new Actions(driver).SendKeys(UnitPriceField, product.UnitPrice).Build().Perform();
-        //    new Actions(driver).SendKeys(QuantityPerUnitField, product.QuantityPerUnit).Build().Perform();
-        //    new Actions(driver).SendKeys(UnitsInStockField, product.UnitsInStock).Build().Perform();
-        //    new Actions(driver).SendKeys(UnitsOnOrderField, product.UnitsOnOrder).Build().Perform();
-        //    new Actions(driver).SendKeys(ReorderLevelField, product.ReorderLevel).Build().Perform();
-        //    new Actions(driver).Click(DiscontinuedField).Build().Perform();
-        //    //new Actions(driver).Click(SendButton).Build().Perform();
-        //}
         public void InputProductName(Product product)
         {
             new Actions(driver).SendKeys(ProductNameField, product.ProductName).Build().Perform();
@@ -130,13 +116,6 @@ namespace WebDriverFramework.page_object
         {
             return ReorderLevelField.GetAttribute("value");
         }
-
-        public bool GetDiscontinued()
-        {
-            if (String.Compare(DiscontinuedField.GetAttribute("checked"), "true") == 0) return true;
-            else return false;
-        }
-        
 
         public AllProductsPage SendNewProduct()
         {

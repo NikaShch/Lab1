@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WebDriverFramework.business_objects
 {
@@ -29,8 +27,6 @@ namespace WebDriverFramework.business_objects
         public string UnitsInStock { get; set; }
         public string UnitsOnOrder { get; set; }
         public string ReorderLevel { get; set; }
-        //public string Discontinued { get; set; }
-
 
         public override bool Equals(Object obj)
         {
