@@ -92,5 +92,9 @@ namespace WebDriverFramework.page_object
             new Actions(driver).SendKeys(CreateNewButton, Keys.Enter).Build().Perform();
             return new ProductPage(driver);
         }
+        public By SearchByProductInTable(int index)
+        {
+            return By.XPath("//table//tr[" + index + "]");
+        }
     }
 }

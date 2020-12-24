@@ -121,6 +121,37 @@ namespace WebDriverFramework.page_object
             new Actions(driver).Click(Button).Build().Perform();
             return new AllProductsPage(driver);
         }
-
+        public void InputProductName(string name)
+        {
+            ProductNameField.SendKeys(name);
+        }
+        public void InputCategoryId(string category)
+        {
+            CategoryIdField.SendKeys(category);
+        }
+        public void InputSupplierId(string supplier)
+        {
+            SupplierIdField.SendKeys(supplier);
+        }
+        public void InputUnitPrice(int price)
+        {
+            UnitPriceField.SendKeys(price.ToString());
+        }
+        public void InputQuantityPerUnit(string quantity)
+        {
+            QuantityPerUnitField.SendKeys(quantity);
+        }
+        public void InputUnitsInStock(int stock)
+        {
+            UnitsInStockField.SendKeys(stock.ToString());
+        }
+        public void InputUnitsOnOrder(int order)
+        {
+            UnitsOnOrderField.SendKeys(order.ToString());
+        }
+        public void InputReorderLevel(int level)
+        {
+            ReorderLevelField.SendKeys(level.ToString());
+        }
     }
 }

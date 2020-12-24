@@ -36,6 +36,11 @@ namespace WebDriverFramework.page_object
             return AccountLogin.Displayed;
 
         }
+        public void InputLogin(string name, string password)
+        {
+            FieldName.SendKeys(name);
+            FieldPassword.SendKeys(password);
+        }
         public string HomePage()
         {
             return FieldLoginPage.Text;
@@ -43,6 +48,10 @@ namespace WebDriverFramework.page_object
         public void GoToAllProducts()
         {
             new Actions(driver).MoveToElement(AllProductsButton).Click(AllProductsButton).Build().Perform();
+        }
+        public void ClickOnSendButton()
+        {
+            InputButton.Click();
         }
     }
 }
