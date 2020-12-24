@@ -100,3 +100,14 @@ C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDri
 C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDriverFramework.dll
 C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDriverFramework.pdb
 C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\obj\Debug\netcoreapp3.1\WebDriverFramework.genruntimeconfig.cache
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\TechTalk.SpecFlow.NUnit.SpecFlowPlugin.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\BoDi.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\Cucumber.Messages.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\Gherkin.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\TechTalk.SpecFlow.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\Utf8Json.dll
+C:\Users\1\rep\Lab1\WebDriverBasic\WebDriverBasic\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

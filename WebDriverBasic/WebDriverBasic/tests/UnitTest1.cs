@@ -9,7 +9,7 @@ namespace WebDriverFramework
     public class Tests : BaseTest
     {
         
-        private LogPage logPage;
+        /*private LogPage logPage;
         private AllProductsPage allProductsPage;
         public int index;
         private readonly Product my = new Product("My_product", "Produce", "Mayumi's", 1000, "10", 500, 4, 1);
@@ -36,6 +36,6 @@ namespace WebDriverFramework
             ProductService.OpenProduct(my, driver);
             Product productMy = ProductService.FormProduct(driver);
             Assert.AreEqual(my, productMy);
-        }
+        }*/
     }
 }
