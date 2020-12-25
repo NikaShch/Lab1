@@ -7,7 +7,7 @@ Scenario: Create a product
 	Given I open "http://localhost:5000" url
 	When I log into with username "user" and password "user" 
 	And I click on send button
-	Then I go to the home page
+	Then I should be at the home page
 	When I click on the all products 
 	And I click on create new product
 	And I create a product with fields "My_product", "Produce", "Mayumi's", "1000", 10, 500, 4, 1

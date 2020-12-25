@@ -110,7 +110,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click on send button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.Then("I go to the home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be at the home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 11
  testRunner.When("I click on the all products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

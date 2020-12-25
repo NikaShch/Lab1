@@ -30,8 +30,8 @@ namespace WebDriverFramework.step_definitions
             new MainPage(driver).ClickOnSendButton();
         }
 
-        [Then(@"I go to the home page")]
-        public void ThenIGoToTheHomePage()
+        [Then(@"I should be at the home page")]
+        public void ThenIShouldBeAtTheHomePage()
         {
             Assert.AreEqual(new LogPage(driver).LogPageText(), "Home page");
         }
